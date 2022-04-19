@@ -9,27 +9,27 @@ import java.util.List;
 @RestController
 public class SucursalController {
 
-    @PostMapping("/add")
+    @PostMapping("sucursal/add")
     public void addSucursal(){
 
     }
-    @PutMapping ("/update")
+    @PutMapping ("sucursal/update")
     public void updateSucursal(Sucursal sucursal){
 
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("sucursal/delete/{id}")
     public void deleteSucursal (int id){
 
     }
 
-    @GetMapping("/getOne/{id}")
+    @GetMapping("sucursal/getOne/{id}")
     public Sucursal getSucursal (int id){
 
         return null;
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("sucursal/getAll")
     public List<Sucursal> getAllSucursal (int id){
 
         return null;
