@@ -2,6 +2,7 @@ package cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.controllers;
 
 
 import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.model.Sucursal;
+import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.model.SucursalDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class SucursalController {
 
     }
     @PutMapping ("sucursal/update")
-    public void updateSucursal(Sucursal sucursal){
+    public void updateSucursal(SucursalDTO sucursal){
 
     }
 
@@ -24,13 +25,13 @@ public class SucursalController {
     }
 
     @GetMapping("sucursal/getOne/{id}")
-    public Sucursal getSucursal (int id){
+    public SucursalDTO getSucursal (int id){
 
         return null;
     }
 
     @GetMapping("sucursal/getAll")
-    public List<Sucursal> getAllSucursal (int id){
+    public List<SucursalDTO> getAllSucursal (int id){
 
         return null;
     }
