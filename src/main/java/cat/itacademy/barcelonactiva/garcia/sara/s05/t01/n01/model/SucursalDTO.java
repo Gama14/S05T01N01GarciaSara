@@ -18,4 +18,6 @@ public class SucursalDTO{
 
     @Column (name = "tipus_sucursal")
     private String tipusSucursal;
+
+    
 }
