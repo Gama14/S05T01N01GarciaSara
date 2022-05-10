@@ -4,21 +4,16 @@ import javax.persistence.*;
 import java.util.*;
 import java.util.List;
 
-@Entity
-@Table(name = "sucursal")
-public class SucursalDTO {
 
+public class SucursalDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
     private int pk_SucursalID;
-    @Column (name = "nom_sucursal")
     private String nomSucursal;
-    @Column (name = "pais_sucursal")
     private String paisSucursal;
-    @Column (name = "tipus_sucursal")
     private String tipusSucursal;
+
     public SucursalDTO (){
 
     }

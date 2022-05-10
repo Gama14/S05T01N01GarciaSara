@@ -4,9 +4,11 @@ import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.model.Sucursal;
 import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.repository.SucursalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class SucursalService {
 
     @Autowired
