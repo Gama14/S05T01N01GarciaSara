@@ -1,18 +1,41 @@
 package cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.services;
 
 import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.model.Sucursal;
-import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.model.SucursalDTO;
+import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.repository.SucursalRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface SucursalService {
-    List<SucursalDTO> getSucursal();
+public class SucursalService {
 
-    void deleteSucursal(int id);
+    @Autowired
+    SucursalRepository sucursalRepository;
 
-    void addSucursal(SucursalDTO sucursal);
+    public void addSucursal(Sucursal sucursal){
+        sucursalRepository.save(sucursal);
 
-    void updateSucursal(SucursalDTO sucursal);
 
-    List<SucursalDTO> getSucursalById(int id);
+    }
+
+    public void updateSucursal(Sucursal sucursal){
+        sucursalRepository.save(sucursal);
+    }
+
+    public void deleteSucursal (int id){
+        sucursalRepository.deleteAllById(id);
+
+    }
+
+    public Sucursal getSucursal (int id) throws Exception {
+        Optional<Sucursal> optionalSucursal =sucursalRepository.findById(id);
+        return optionalSucursal.orElseThrow(() -> new Exception("No hi ha cap sucursal amb l'id: " + id));
+    }
+
+    public List<Sucursal> getAllSucursal (){
+
+        return (List<Sucursal>) sucursalRepository.findAll();
+    }
+
+
 }
