@@ -3,12 +3,14 @@ package cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.services;
 import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.model.Sucursal;
 import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.repository.SucursalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Transactional
+@Service
 public class SucursalService {
 
     @Autowired
@@ -38,6 +40,8 @@ public class SucursalService {
 
         return (List<Sucursal>) sucursalRepository.findAll();
     }
+
+
 
 
 }

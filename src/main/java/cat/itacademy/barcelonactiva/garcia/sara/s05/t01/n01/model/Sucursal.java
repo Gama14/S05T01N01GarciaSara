@@ -15,13 +15,16 @@ public class Sucursal {
 
     @Column (name = "pais_sucursal")
     private String paisSucursal;
+    @Column (name = "tipus_sucursal")
+    private String tipusSucursal;
 
     public Sucursal (){
 
     }
-    public Sucursal(String nom, String pais){
-        nomSucursal=nom;
-        paisSucursal=pais;
+    public Sucursal(String nom, String pais,String tipusSucursal ){
+        this.nomSucursal=nom;
+        this.paisSucursal=pais;
+        this.tipusSucursal=tipusSucursal;
     }
 
 
@@ -44,6 +47,10 @@ public class Sucursal {
     public void setPaisSucursal(String paisSucursal) {
         this.paisSucursal = paisSucursal;
     }
-
-
+    public String getTipusSucursal() {
+        return tipusSucursal;
+    }
+    public void setTipusSucursal(String tipusSucursal) {
+        this.tipusSucursal = tipusSucursal;
+    }
 }

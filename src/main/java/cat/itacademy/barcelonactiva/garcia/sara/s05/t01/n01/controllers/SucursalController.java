@@ -17,7 +17,7 @@ public class SucursalController {
 
     @PostMapping("sucursal/add")
     public void addSucursal(@RequestBody SucursalDTO sucursalDto){
-    Sucursal sucursal = new Sucursal(sucursalDto.getNomSucursal(),sucursalDto.getPaisSucursal()) ;
+    Sucursal sucursal = new Sucursal(sucursalDto.getNomSucursal(),sucursalDto.getPaisSucursal(),sucursalDto.getTipusSucursal()) ;
     sucursalService.addSucursal(sucursal);
 
 
