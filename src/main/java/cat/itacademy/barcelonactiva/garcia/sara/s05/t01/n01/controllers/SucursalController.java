@@ -21,24 +21,29 @@ public class SucursalController {
 
     @PostMapping("/add")
     public ResponseEntity<?> addSucursal(@RequestBody SucursalDTO sucursalDto){
-    Sucursal sucursal = new Sucursal(sucursalDto.getNomSucursal(),sucursalDto.getPaisSucursal(),sucursalDto.getTipusSucursal()) ;
+    Sucursal sucursal = new Sucursal(sucursalDto.getNomSucursal(),sucursalDto.getPaisSucursal(),sucursalDto.comprovacioUE(sucursalDto.getPaisSucursal())) ;
 
 
     return ResponseEntity.status(HttpStatus.CREATED).body(sucursalService.addSucursal(sucursal));
     }
 
     @PutMapping ("/update/{id}")
-    public void updateSucursal(@PathVariable Long id,@RequestBody SucursalDTO sucursalDto) throws Exception {
-
-        Sucursal sucursal1 = sucursalService.getSucursal(id);
-
-        if(sucursalDto.getNomSucursal() != null) {
-            sucursal1.setNomSucursal(sucursalDto.getNomSucursal());
-        }else if (sucursalDto.getPaisSucursal() != null){
-            sucursal1.setPaisSucursal(sucursalDto.getPaisSucursal());
-            sucursal1.setTipusSucursal(sucursalDto.getTipusSucursal());
+    public String updateSucursal(@PathVariable Long id,@RequestBody SucursalDTO sucursalDto) throws Exception {
+        String missatge ="";
+        if(!sucursalService.existsById(id)){
+            missatge = "No s'ha trobat cap sucursal amb l'id: "+id;
+        }else {
+            Sucursal sucursal1 = sucursalService.getSucursal(id);
+            if (sucursalDto.getNomSucursal() != null) {
+                sucursal1.setNomSucursal(sucursalDto.getNomSucursal());
+            } else if (sucursalDto.getPaisSucursal() != null) {
+                sucursal1.setPaisSucursal(sucursalDto.getPaisSucursal());
+                sucursal1.setTipusSucursal(sucursalDto.comprovacioUE(sucursalDto.getPaisSucursal()));
+            }
+            sucursalService.updateSucursal(sucursal1);
+            missatge="S'ha actualitzat amb exit";
         }
-        sucursalService.updateSucursal(sucursal1);
+        return missatge;
     }
 
     @DeleteMapping("/delete/{id}")

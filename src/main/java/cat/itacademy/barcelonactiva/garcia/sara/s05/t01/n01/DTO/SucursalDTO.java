@@ -20,7 +20,7 @@ public class SucursalDTO {
     public SucursalDTO(String nom, String pais){
         nomSucursal=nom;
         paisSucursal=pais;
-       comprovacioUE(pais);
+
 
 
     }
@@ -56,7 +56,7 @@ public class SucursalDTO {
     public void setTipusSucursal(String tipusSucursal) {
         this.tipusSucursal = tipusSucursal;}
 
-    public void comprovacioUE (String pais){
+    public String comprovacioUE (String pais){
         tipusSucursal = "foraUE";
         int size = UE.size();
         for (int i =0; i<size;i++){
@@ -64,7 +64,7 @@ public class SucursalDTO {
                 tipusSucursal="dinsUE";
             }
         }
-
+    return tipusSucursal;
     }
 
 
