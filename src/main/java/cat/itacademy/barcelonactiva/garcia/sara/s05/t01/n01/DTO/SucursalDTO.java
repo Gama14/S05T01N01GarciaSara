@@ -7,9 +7,9 @@ import java.util.List;
 
 public class SucursalDTO {
 
-    @Id
+   
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int pk_SucursalID;
+    private Long id;
     private String nomSucursal;
     private String paisSucursal;
     private String tipusSucursal;
@@ -32,11 +32,11 @@ public class SucursalDTO {
 
 
 
-    public int getPk_SucursalID() {
-        return pk_SucursalID;
+    public Long getId() {
+        return id;
     }
-    public void setPk_SucursalID(int pk_SucursalID) {
-        this.pk_SucursalID = pk_SucursalID;
+    public void setId(Long id) {
+        this.id = id;
     }
     public String getNomSucursal() {
         return nomSucursal;

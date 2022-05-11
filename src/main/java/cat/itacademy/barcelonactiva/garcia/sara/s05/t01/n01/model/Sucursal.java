@@ -8,7 +8,7 @@ public class Sucursal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id")
-    private int pk_SucursalID;
+    private Long id;
 
     @Column (name = "nom_sucursal")
     private String nomSucursal;
@@ -29,11 +29,11 @@ public class Sucursal {
 
 
 
-    public int getPk_SucursalID() {
-        return pk_SucursalID;
+    public Long getId() {
+        return id;
     }
-    public void setPk_SucursalID(int pk_SucursalID) {
-        this.pk_SucursalID = pk_SucursalID;
+    public void setId(Long id) {
+        this.id = id;
     }
     public String getNomSucursal() {
         return nomSucursal;

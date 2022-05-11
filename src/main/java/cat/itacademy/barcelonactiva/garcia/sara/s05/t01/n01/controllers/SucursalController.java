@@ -5,26 +5,30 @@ import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.DTO.SucursalDTO;
 import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.model.Sucursal;
 import cat.itacademy.barcelonactiva.garcia.sara.s05.t01.n01.services.SucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/sucursal")
 public class SucursalController {
 
     @Autowired
-    SucursalService sucursalService;
+    private SucursalService sucursalService;
 
-    @PostMapping("sucursal/add")
-    public void addSucursal(@RequestBody SucursalDTO sucursalDto){
+    @PostMapping("/add")
+    public ResponseEntity<?> addSucursal(@RequestBody SucursalDTO sucursalDto){
     Sucursal sucursal = new Sucursal(sucursalDto.getNomSucursal(),sucursalDto.getPaisSucursal(),sucursalDto.getTipusSucursal()) ;
-    sucursalService.addSucursal(sucursal);
 
 
+    return ResponseEntity.status(HttpStatus.CREATED).body(sucursalService.addSucursal(sucursal));
     }
 
-    @PutMapping ("sucursal/update/{id}")
-    public void updateSucursal(@PathVariable int id,@RequestBody SucursalDTO sucursalDto) throws Exception {
+    @PutMapping ("/update/{id}")
+    public void updateSucursal(@PathVariable Long id,@RequestBody SucursalDTO sucursalDto) throws Exception {
 
 
         Sucursal sucursal1 = sucursalService.getSucursal(id);
@@ -33,23 +37,23 @@ public class SucursalController {
             sucursal1.setNomSucursal(sucursalDto.getNomSucursal());
         }else if (sucursalDto.getPaisSucursal() != null){
             sucursal1.setPaisSucursal(sucursalDto.getPaisSucursal());
+            sucursal1.setTipusSucursal(sucursalDto.getTipusSucursal());
         }
-
     }
 
-    @DeleteMapping("sucursal/delete/{id}")
-    public void deleteSucursal (int id){
+    @DeleteMapping("/delete/{id}")
+    public void deleteSucursal (Long id){
     sucursalService.deleteSucursal(id);
 
     }
 
-    @GetMapping("sucursal/getOne/{id}")
-    public Sucursal getSucursal (int id) throws Exception {
+    @GetMapping("/getOne/{id}")
+    public Sucursal getSucursal (Long id) throws Exception {
 
         return sucursalService.getSucursal(id);
     }
 
-    @GetMapping("sucursal/getAll")
+    @GetMapping("/getAll")
     public List<Sucursal> getAllSucursal (){
 
         return sucursalService.getAllSucursal();
