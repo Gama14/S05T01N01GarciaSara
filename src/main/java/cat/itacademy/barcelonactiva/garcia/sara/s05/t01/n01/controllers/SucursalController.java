@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/sucursal")
 public class SucursalController {
@@ -19,14 +20,18 @@ public class SucursalController {
     @Autowired
     private SucursalService sucursalService;
 
+    /*metode per afegir una sucursal a la base de dades. Recollim les dades a traves de la SucursalDTO i a traves del
+    service fem el traspas a Sucursal per afegir-ho a la base de dades. En aquest cas utilitcem ResponseEntity perque en cas de que funcioni
+    ens retorni les dades que hem creat*/
     @PostMapping("/add")
     public ResponseEntity<?> addSucursal(@RequestBody SucursalDTO sucursalDto){
-    Sucursal sucursal = new Sucursal(sucursalDto.getNomSucursal(),sucursalDto.getPaisSucursal(),sucursalDto.comprovacioUE(sucursalDto.getPaisSucursal())) ;
-
+    Sucursal sucursal = new Sucursal
+            (sucursalDto.getNomSucursal(),sucursalDto.getPaisSucursal(),sucursalDto.comprovacioUE(sucursalDto.getPaisSucursal())) ;
 
     return ResponseEntity.status(HttpStatus.CREATED).body(sucursalService.addSucursal(sucursal));
     }
 
+    //metode per actualitzar les sucursals
     @PutMapping ("/update/{id}")
     public String updateSucursal(@PathVariable Long id,@RequestBody SucursalDTO sucursalDto) throws Exception {
         String missatge ="";
@@ -46,6 +51,7 @@ public class SucursalController {
         return missatge;
     }
 
+    //metode per eliminar sucursals
     @DeleteMapping("/delete/{id}")
     public String deleteSucursal (@PathVariable Long id){
     String missatge ="";
@@ -58,11 +64,13 @@ public class SucursalController {
     return missatge;
     }
 
+    //metode que retorna una sucursal
     @GetMapping("/getOne/{id}")
     public Sucursal getSucursal (@PathVariable Long id) throws Exception {
         return sucursalService.getSucursal(id);
     }
 
+    //metode que retorna totes les sucursals
     @GetMapping("/getAll")
     public List<Sucursal> getAllSucursal (){
 

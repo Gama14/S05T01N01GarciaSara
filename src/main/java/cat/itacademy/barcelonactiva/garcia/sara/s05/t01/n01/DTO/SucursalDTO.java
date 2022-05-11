@@ -13,6 +13,11 @@ public class SucursalDTO {
     private String nomSucursal;
     private String paisSucursal;
     private String tipusSucursal;
+    String a[]
+            = new String[] { "alemanya", "austria", "belgica", "bulgaria","xipre", "croacia","dinamarca","eslovenia",
+            "espanya", "estonia","finlandia", "frança", "grecia", "hungria","irlanda","italia", "letonia", "lituania",
+            "luxebmurg", "malta","paisos baixos","polonia","portugal", "republica txeca", "republica eslovaca", "rumania", "suecia" };
+    List<String> UE = Arrays.asList(a);
 
     public SucursalDTO (){
 
@@ -20,16 +25,8 @@ public class SucursalDTO {
     public SucursalDTO(String nom, String pais){
         nomSucursal=nom;
         paisSucursal=pais;
-
-
-
+        tipusSucursal=comprovacioUE(pais);
     }
-    String a[]
-            = new String[] { "alemanya", "austria", "belgica", "bulgaria","xipre", "croacia","dinamarca","eslovenia",
-            "espanya", "estonia","finlandia", "frança", "grecia", "hungria","irlanda","italia", "letonia", "lituania",
-            "luxebmurg", "malta","paisos baixos","polonia","portugal", "republica txeca", "republica eslovaca", "rumania", "suecia" };
-    List<String> UE = Arrays.asList(a);
-
 
 
     public Long getId() {
@@ -56,6 +53,7 @@ public class SucursalDTO {
     public void setTipusSucursal(String tipusSucursal) {
         this.tipusSucursal = tipusSucursal;}
 
+    //metode que retorna un string indicant si els paisos estan dins o fora la UE
     public String comprovacioUE (String pais){
         tipusSucursal = "foraUE";
         int size = UE.size();
