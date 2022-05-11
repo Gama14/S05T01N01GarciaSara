@@ -20,7 +20,7 @@ public class SucursalDTO {
     public SucursalDTO(String nom, String pais){
         nomSucursal=nom;
         paisSucursal=pais;
-        tipusSucursal=comprovacioUE();
+       comprovacioUE(pais);
 
 
     }
@@ -56,15 +56,15 @@ public class SucursalDTO {
     public void setTipusSucursal(String tipusSucursal) {
         this.tipusSucursal = tipusSucursal;}
 
-    public String comprovacioUE (){
-        String comprovacioUE = "foraUE";
+    public void comprovacioUE (String pais){
+        tipusSucursal = "foraUE";
         int size = UE.size();
         for (int i =0; i<size;i++){
-            if(paisSucursal.equalsIgnoreCase(UE.get(i))){
-                comprovacioUE="dinsUE";
+            if(pais.equalsIgnoreCase(UE.get(i))){
+                tipusSucursal="dinsUE";
             }
         }
-        return comprovacioUE;
+
     }
 
 

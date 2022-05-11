@@ -30,7 +30,6 @@ public class SucursalController {
     @PutMapping ("/update/{id}")
     public void updateSucursal(@PathVariable Long id,@RequestBody SucursalDTO sucursalDto) throws Exception {
 
-
         Sucursal sucursal1 = sucursalService.getSucursal(id);
 
         if(sucursalDto.getNomSucursal() != null) {
@@ -39,17 +38,23 @@ public class SucursalController {
             sucursal1.setPaisSucursal(sucursalDto.getPaisSucursal());
             sucursal1.setTipusSucursal(sucursalDto.getTipusSucursal());
         }
+        sucursalService.updateSucursal(sucursal1);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteSucursal (Long id){
-    sucursalService.deleteSucursal(id);
-
+    public String deleteSucursal (@PathVariable Long id){
+    String missatge ="";
+        if(!sucursalService.existsById(id)){
+         missatge = "No s'ha trobat cap sucursal amb l'id: "+id;
+       }else{
+            sucursalService.deleteSucursal(id);
+          missatge= "La sucursal amb id "+id+" ha estat eliminada amb éxit";
+        }
+    return missatge;
     }
 
     @GetMapping("/getOne/{id}")
-    public Sucursal getSucursal (Long id) throws Exception {
-
+    public Sucursal getSucursal (@PathVariable Long id) throws Exception {
         return sucursalService.getSucursal(id);
     }
 

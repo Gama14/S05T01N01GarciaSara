@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SucursalRepository extends JpaRepository<Sucursal,Long> {
 
-    Sucursal findAllById(Long id);
 
-    void deleteAllById(Long id);
+
 }

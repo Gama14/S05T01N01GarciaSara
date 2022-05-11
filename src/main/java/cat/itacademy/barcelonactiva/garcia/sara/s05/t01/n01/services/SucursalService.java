@@ -20,8 +20,6 @@ public class SucursalService {
     public Sucursal addSucursal(Sucursal sucursal){
         sucursalRepository.save(sucursal);
         return sucursal;
-
-
     }
 
     public void updateSucursal(Sucursal sucursal){
@@ -29,7 +27,7 @@ public class SucursalService {
     }
 
     public void deleteSucursal (Long id){
-        sucursalRepository.deleteAllById(id);
+        sucursalRepository.deleteById(id);
 
     }
 
@@ -43,7 +41,9 @@ public class SucursalService {
         return (List<Sucursal>) sucursalRepository.findAll();
     }
 
-
+    public boolean existsById(Long id){
+        return sucursalRepository.existsById(id);
+    }
 
 
 }
